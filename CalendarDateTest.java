@@ -39,4 +39,28 @@ public class CalendarDateTest {
 		assertTrue(cal.equals(other));
 		assertFalse(cal.equals(not));
 	}
+	
+	@Test
+	public void testTomorrow() {
+		CalendarDate cal = new CalendarDate(1999,12,31);
+		CalendarDate cal2 = new CalendarDate(2016,2,29);
+		CalendarDate cal3 = new CalendarDate(2015,2,28);
+		CalendarDate cal4 = new CalendarDate(2020,9,30);
+		CalendarDate cal5 = new CalendarDate(1992,5,31);
+		CalendarDate cal6 = new CalendarDate(2001,10,13);
+		
+		cal = cal.tomorrow();
+		cal2 = cal2.tomorrow();
+		cal3 = cal3.tomorrow();
+		cal4 = cal4.tomorrow();
+		cal5 = cal5.tomorrow();
+		cal6 = cal6.tomorrow();
+		
+		assertEquals("January 1, 2000",cal.toString());
+		assertEquals("March 1, 2016",cal2.toString());
+		assertEquals("March 1, 2015",cal3.toString());
+		assertEquals("October 1, 2020",cal4.toString());
+		assertEquals("June 1, 1992",cal5.toString());
+		assertEquals("October 14, 2001",cal6.toString());
+	}
 }
