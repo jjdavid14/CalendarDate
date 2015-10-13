@@ -135,7 +135,59 @@ public class CalendarDate {
 	}
 
 	public CalendarDate tomorrow() {
-		CalendarDate tom = new CalendarDate(year,month,day+1);
-		return tom;
+		int yr = year;
+		int mon = month;
+		int dy = day;
+		if(month == 1 || month == 3 || month == 5 || month == 7
+				|| month == 8 || month == 10) {
+			if(day == 31) {
+				mon++;
+				dy = 1;
+			}
+			else {
+				dy++;
+			}
+		}
+		else if(month == 4 || month == 6 || month == 9 ||
+				month == 11) {
+			if(day == 30) {
+				mon++;
+				dy = 1;
+			}
+			else {
+				dy++;
+			}
+		}
+		else if (month == 12) {
+			if(day == 31){
+				yr = year + 1;
+				mon = 1;
+				dy = 1;
+			}
+			else {
+				dy++;
+			}
+		}
+		else {
+			if(isLeapYear(year)) {
+				if(day == 29){
+					mon++;
+					dy = 1;
+				}
+				else {
+					dy++;
+				}
+			}
+			else {
+				if(day == 28){
+					mon++;
+					dy = 1;
+				}
+				else {
+					dy++;
+				}
+			}
+		}
+		return new CalendarDate(yr,mon,dy);
 	}
 }
